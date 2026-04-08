@@ -1,0 +1,5 @@
+export enum OrderEnum {
+  PENDING = 'PENDING',
+  COMPLETED = 'COMPLETED',
+  CANCELLED = 'CANCELLED',
+}

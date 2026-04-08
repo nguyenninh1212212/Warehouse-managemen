@@ -1,0 +1,20 @@
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { OrdersService } from './orders.service';
+import { OrdersController } from './orders.controller';
+import { Order, OrderSchema } from './schemas/order.schema';
+import { ProductsModule } from '../products/products.module';
+import { BuyerModule } from '../buyer/buyer.module';
+
+@Module({
+  imports: [
+    MongooseModule.forFeature([{ name: Order.name, schema: OrderSchema }]),
+    ProductsModule,
+    BuyerModule,
+  ],
+  controllers: [OrdersController],
+  providers: [OrdersService],
+  // THÊM DÒNG NÀY VÀO ĐÂY:
+  exports: [MongooseModule, OrdersService],
+})
+export class OrdersModule {}
